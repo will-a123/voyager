@@ -1,0 +1,36 @@
+.item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+}
+
+.contents {
+  composes: maxWidth from "#/features/shared/shared.module.css";
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.domain {
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.stats {
+  font-size: 0.9rem;
+  color: var(--ion-color-medium);
+}
+
+.linkedIcon {
+  color: var(--ion-color-medium);
+  flex-shrink: 0;
+}

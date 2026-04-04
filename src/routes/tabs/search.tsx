@@ -1,5 +1,7 @@
 import Route from "#/routes/common/Route";
 import CommunitiesExplorePage from "#/routes/pages/search/CommunitiesExplorePage";
+import InstanceCommunitiesPage from "#/routes/pages/search/InstanceCommunitiesPage";
+import InstancesExplorePage from "#/routes/pages/search/InstancesExplorePage";
 import RandomCommunityPage from "#/routes/pages/search/RandomCommunityPage";
 import SearchCommunitiesPage from "#/routes/pages/search/results/SearchCommunitiesPage";
 import SearchPostsResultsPage from "#/routes/pages/search/results/SearchFeedResultsPage";
@@ -23,5 +25,11 @@ export default [
   </Route>,
   <Route exact path="/search/explore">
     <CommunitiesExplorePage />
+  </Route>,
+  <Route exact path="/search/explore/instances">
+    <InstancesExplorePage />
+  </Route>,
+  <Route exact path="/search/explore/instances/:instance/communities">
+    <InstanceCommunitiesPage />
   </Route>,
 ];

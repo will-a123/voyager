@@ -1,0 +1,38 @@
+.backdrop {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.2);
+
+  :global(.ion-palette-dark) & {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.contents {
+  --background: var(--ion-background-color);
+
+  :global(.ion-palette-dark) & {
+    --background: var(--ion-background-color-step-100);
+  }
+
+  background: var(--background);
+  max-width: 500px;
+  width: calc(100vw - 2rem);
+  overflow: auto;
+  margin: 1rem auto;
+  border-radius: 0.5rem;
+
+  overscroll-behavior: contain;
+
+  ion-item {
+    --ion-item-background: var(--ion-background-color);
+
+    :global(.ion-palette-dark) & {
+      --ion-item-background: var(--ion-background-color-step-100);
+    }
+  }
+}

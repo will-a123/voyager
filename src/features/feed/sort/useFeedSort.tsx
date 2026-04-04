@@ -200,6 +200,17 @@ export function useFeedSortParams<Context extends FeedSortContext>(
   return convertSortToLemmyParams(context, sort, mode) ?? null;
 }
 
+export function getFeedSortParamsForMode<Context extends FeedSortContext>(
+  context: Context,
+  sort: VgerSortsByContext[Context] | null | undefined,
+  mode: ThreadiverseMode | null | undefined,
+): Sorts[Context] | null | undefined {
+  if (!mode) return mode;
+  if (!sort) return sort;
+
+  return convertSortToLemmyParams(context, sort, mode) ?? null;
+}
+
 function convertSortToLemmyParams<Context extends FeedSortContext>(
   context: Context,
   sort: VgerSortsByContext[Context],

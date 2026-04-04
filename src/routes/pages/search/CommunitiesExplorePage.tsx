@@ -1,7 +1,10 @@
-import { IonBackButton, IonButtons, IonTitle, IonToolbar } from "@ionic/react";
+import { IonBackButton, IonButtons, IonToolbar } from "@ionic/react";
 import { useState } from "react";
 import { CommunityView, ListingType } from "threadiverse";
 
+import { ExploreModeProvider } from "#/features/explore/ExploreModeContext";
+import ExploreModeDropdown from "#/features/explore/ExploreModeDropdown";
+import ExploreModePicker from "#/features/explore/ExploreModePicker";
 import CommunityFeed from "#/features/feed/CommunityFeed";
 import { AbortLoadError, FetchFn } from "#/features/feed/Feed";
 import ListingTypeFilter from "#/features/feed/ListingType";
@@ -17,7 +20,7 @@ import { LIMIT } from "#/services/lemmy";
 
 import { CommunitySort } from "./results/CommunitySort";
 
-export default function CommunitiesExplorePage() {
+function CommunitiesExploreContent() {
   const buildGeneralBrowseLink = useBuildGeneralBrowseLink();
   const client = useClient();
   const [sort, setSort] = useFeedSort("communities", {
@@ -51,20 +54,29 @@ export default function CommunitiesExplorePage() {
             />
           </IonButtons>
 
-          <IonTitle>Communities</IonTitle>
-
-          <IonButtons slot="end">
-            <ListingTypeFilter
-              listingType={listingType}
-              setListingType={setListingType}
-            />
-            <CommunitySort sort={sort} setSort={setSort} />
-          </IonButtons>
+          <ExploreModePicker mode="communities">
+            <IonButtons slot="end">
+              <ListingTypeFilter
+                listingType={listingType}
+                setListingType={setListingType}
+              />
+              <CommunitySort sort={sort} setSort={setSort} />
+            </IonButtons>
+          </ExploreModePicker>
         </IonToolbar>
       </AppHeader>
       <FeedContent>
         <CommunityFeed fetchFn={fetchFn} />
+        <ExploreModeDropdown mode="communities" />
       </FeedContent>
     </AppPage>
+  );
+}
+
+export default function CommunitiesExplorePage() {
+  return (
+    <ExploreModeProvider>
+      <CommunitiesExploreContent />
+    </ExploreModeProvider>
   );
 }

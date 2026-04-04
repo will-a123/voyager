@@ -7,6 +7,7 @@ type InternalFeedType =
   | "CommentsSearch"
   | "CommunitiesSearch"
   | "CommunitiesExplore"
+  | "InstanceCommunities"
   | "ProfilePosts"
   | "ProfileComments";
 
